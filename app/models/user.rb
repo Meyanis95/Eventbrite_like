@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :events, through: attendance
+  has_many :events, through: :attendances
+  has_many :attendances
 
   after_create :welcome_send
 
