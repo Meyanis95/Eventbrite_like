@@ -14,58 +14,52 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>    
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-          <a class="navbar-brand" href="/">Eventbite</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link"><%= link_to "Créer un event", new_event_path, method: :get, :class => "btn" %></a>
-          </li>
-     </div>
-
-    <%if user_signed_in? %>
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Se déconnecter/Mon profil
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">EventbriteProject</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <li class="nav-item">
-          <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href='users/show'>Mon profil <span class="sr-only">(current)</span></a>
-          </li>
-        </div>
-      </div>
-      </ul>
-      <%else%>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">S'inscrire/Se connecter
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <li class="nav-item">
-              <%= link_to "Se connecter", new_user_session_path %>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-            <%= link_to "S'inscrire", new_user_registration_path %>
+            <li class="nav-item active">
+              <a class="nav-link" href="/events/new">Créer un event <span class="sr-only">(current)</span></a>
             </li>
-          </div>
+            <%if user_signed_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profil
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href=<%= destroy_user_session_path %>>Se déconnecter<span class="sr-only">(current)</span></a>
+                <a class="dropdown-item" href='users/show'>Mon profil<span class="sr-only">(current)</span></a>
+              </div>
+            </li>
+            <%else%>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                S'incrire/Se connecter
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href='/users/sign_in'>Se connecter<span class="sr-only">(current)</span></a>
+                <a class="dropdown-item" href='/users/sign_up'>S'incrire<span class="sr-only">(current)</span></a>
+              </div>
+            </li>
+            <% end %>
+          </ul>
         </div>
-      <%end%>
-    </div>
-    </nav>
-    <% flash.each do |type, msg| %>
+      </nav>
+
+      <% flash.each do |type, msg| %>
       <div class="alert alert-info text-center">
           <%= msg %>
       </div>
-    <% end %>
-    <%= yield %>
+      <% end %>
+
+      <%= yield %>
+
+
   </body>
 </html>

@@ -9,8 +9,9 @@
 </div>
 
   <div class="card-group">
-      <% @events.each do |event| %>
+      
         <div class="col-sm-4 text-center">
+          <% @events.each do |event| %>
           <div class="card-columns-fluid">
             <div class="card border-primary bg-light mb-3 display:inline-block" style = "width: 25rem; " >
               <div class="card-body">
@@ -19,6 +20,7 @@
                 <p class="card-text">Titre de l'event : <%= event.title.capitalize %></p>
             </div>
           </div>
+          <% end %>
         </div>
-      <% end %>
+      
   </div>
