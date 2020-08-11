@@ -1,0 +1,52 @@
+<html>
+
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4"> Ici tu peux créer ton événement !</h1>
+        <p> C'est parti !</p>
+      </div>
+    </div>
+   
+   <div class="container mt-5">
+
+    <%= form_tag url_for(action: 'create'), method: "POST" do %>
+
+    <div class = "form-group">
+      <%= label_tag 'Date' %>
+      <%= date_field_tag 'start_date', params['start_date'], class: "form-control"%>
+    </div>
+
+    <div class = "form-group">
+      <%= label_tag 'Durée' %>
+      <%= number_field_tag 'duration', params['duration'], class: "form-control"%>
+    </div>
+
+    <div class = "form-group">
+      <%= label_tag 'Titre' %>
+      <%= text_field_tag 'title', params['title'], class: "form-control"%>
+    </div>
+
+    <div class = "form-group">
+      <%= label_tag 'Description (min: 20 caractères)' %>
+      <%= text_area_tag 'description', params['descritpion'], class: "form-control"%>
+    </div>
+
+    <div class = "form-group">
+      <%= label_tag 'Prix' %>
+      <%= number_field_tag 'price', params['price'], class: "form-control"%>
+    </div>
+
+    <div class = "form-group">
+      <%= label_tag 'Ville' %>
+      <%= text_field_tag 'location', params['location'], class: "form-control"%>
+    </div>
+
+    <div class = "form-group">
+      <%= submit_tag "Créer ton événement", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+   </div>
+
+  </body>
+</html>

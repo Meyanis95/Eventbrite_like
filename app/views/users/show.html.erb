@@ -1,1 +1,32 @@
-<h1> Mon profil </h1>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Mon profil</h1>
+  </div>
+</div>
+
+<p> Tes informations : </p>
+<div>
+    <ul>
+      <li>
+        <p>Prénom : <%= @user.first_name %></p>
+      </li>
+      <li>
+        <p>Nom : <%= @user.last_name %></p>
+      </li>
+      <li>
+        <p>Description : <%= @user.description %></p>
+      </li>
+      <li>
+        <p>Email : <%= @user.email %></p>
+      </li>
+      <li>
+        <p>La liste des événements crées :</p>
+        <p><% @events.where(user_id: current_user.id) do |event| %>
+          <p>Event : <%= @event.title %></p>
+        <% end %>
+      </li>
+      <li>
+        <p>Editer mon profil :<%= link_to "Editer", edit_user_registration_path %></p>
+      </li>
+    </ul>
+  </div>

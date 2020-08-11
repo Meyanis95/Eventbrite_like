@@ -1,2 +1,24 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Bienvenue sur notre page d'accueil !</h1>
+    <p class="lead">Prenez vos places pour un de nos événements :</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/events/new" role="button">Créer un événement</a>
+    </p>
+  </div>
+</div>
+
+  <div class="card-group">
+      <% @events.each do |event| %>
+        <div class="col-sm-4 text-center">
+          <div class="card-columns-fluid">
+            <div class="card border-primary bg-light mb-3 display:inline-block" style = "width: 25rem; " >
+              <div class="card-body">
+                <h5 class="card-title"><%= event.title.capitalize %></h5>
+                <h6 class="card-subtitle mb-2 text-muted">Crée le <%= event.created_at.to_s(:db) %></h6>
+                <p class="card-text">Titre de l'event : <%= event.title.capitalize %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
