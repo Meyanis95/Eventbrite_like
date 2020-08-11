@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/', to: 'events#index'
+  get 'static_pages/index'
+  get 'static_pages/secret'
+  get 'users/show', to: 'users#show'
+  resources :events
+  devise_for :users
 end
