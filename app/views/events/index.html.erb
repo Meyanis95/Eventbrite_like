@@ -8,19 +8,22 @@
   </div>
 </div>
 
+<div class="container">
   <div class="card-group">
-      
+      <% @events.each do |event| %>
         <div class="col-sm-4 text-center">
-          <% @events.each do |event| %>
           <div class="card-columns-fluid">
             <div class="card border-primary bg-light mb-3 display:inline-block" style = "width: 25rem; " >
+              <img src="<%=image_path('img'+rand(1..6).to_s+'.jpg')%>" class="card-img-top" alt="Responsive image">
               <div class="card-body">
                 <h5 class="card-title"><%= event.title.capitalize %></h5>
                 <h6 class="card-subtitle mb-2 text-muted">Crée le <%= event.created_at.to_s(:db) %></h6>
-                <p class="card-text">Titre de l'event : <%= event.title.capitalize %></p>
+                <p class="card-text">Prix : <%= event.price %>€</p>
+                <a class="btn btn-primary btn-lg" href="<%=event_path(event.id)%>" role="button">Voir plus</a>
             </div>
           </div>
-          <% end %>
+          
         </div>
-      
+      </div>
+      <% end %>
   </div>

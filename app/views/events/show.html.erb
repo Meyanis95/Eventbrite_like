@@ -1,0 +1,19 @@
+
+<div class = "container">
+  <div class="card text-center">
+  <div class="card-header">
+    <%= @event.title.capitalize%>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @event.title.capitalize%></h5>
+    <p class="card-text">Description : <%= @event.description%></p>
+    <p class="card-text">Du <%= @event.start_date.to_s(:db)%> au <%= (@event.start_date + @event.duration*60).to_s(:db) %> </p>
+    <p class="card-text"><%= @event.price%> €</p>
+    <p class="card-text">Lieu : <%= @event.location%></p>
+    <p class="card-text">Organisteur : <%= User.find_by(id: @event.user_id).first_name%> </p>
+    <a href="<%=new_attendance_path%>" class="btn btn-primary">Prend ta place !</a>
+  </div>
+  <div class="card-footer text-muted">
+    <%= @event.created_at.to_s(:db)%>
+  </div>
+</div>

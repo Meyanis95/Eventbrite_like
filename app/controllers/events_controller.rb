@@ -10,12 +10,14 @@ class EventsController < ApplicationController
 
   def create
     @new_event = Event.new(start_date: params[:start_date], duration: params[:duration], title: params[:title],description: params[:description], price: params[:price], location: params[:location], user_id: current_user.id)
-    puts "voici l'id de l'utilisateur co = #{current_user.id}"
-    puts "et le pramas =#{params} "
     if @new_event.save
       redirect_to '/', notice: "Event bien enregistré !"
     else
       redirect_to '/', notice: "Aie ton event n'est pas valide"
     end
+  end
+
+  def show
+    @event = Event.find_by(id:params[:id])
   end
 end

@@ -14,9 +14,14 @@
  *= require_self
  */
  .jumbotron {
-  background-image: url("https://images.unsplash.com/photo-1573152958734-1922c188fba3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80");
+  background-image: url("https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80");
   background-size: cover;
   background-repeat: no-repeat;
+  background-color:black;
   color: white;
   text-align: center
+}
+
+.body {
+  background:black;
 }
